@@ -42,18 +42,18 @@ topEdgeToTopButtons = 1;
 frontEdgeToFrontVolumeButtons = 26;
 frontEdgeToFrontPowerButton = frontEdgeToFrontVolumeButtons + volumeButtonsHeight + 7;
 
-logoDiameter = 40;
+logoDiameter = 41.5;
 
 speakerPushWidth = 15;
 speakerPushHeight = 10;
-speakerPushDepth = 3;
+speakerPushDepth = 1;
 speakerPushRadius = 2;
 backEdgeToBackSpeakerPush = 6;
 centreEdgeToRightSpeakerPush = 10;
 
 batteryPushWidth = 5;
 batteryPushHeight = 30;
-batteryPushDepth = 2;
+batteryPushDepth = 0;
 batteryPushRadius = 2;
 backEdgeToBatteryPush = 25;
 centreEdgeToBatteryPushSides = 20;
