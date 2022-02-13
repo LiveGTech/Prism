@@ -10,11 +10,13 @@ sep = 1e-3;
 sep2 = sep * 2;
 
 diameter = 39;
-lip = 3;
-height = 3;
+height = 1;
+lipHeight = 0.2;
+lipDiameter = 42;
 
 module circle() {
-    cyl(h = height, d1 = diameter + lip, d2 = diameter, align = V_TOP);
+    cyl(h = height, d = diameter, align = V_TOP);
+    cyl(h = lipHeight, d = lipDiameter, align = V_TOP);
 }
 
 module square(cut = false) {
