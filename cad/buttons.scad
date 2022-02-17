@@ -1,3 +1,12 @@
+/*
+    Prism
+
+    Copyright (C) LiveG. All Rights Reserved.
+
+    https://liveg.tech
+    Licensed by the LiveG Open-Source Licence, which can be found at LICENCE.md.
+*/
+
 include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 use <BOSL/shapes.scad>
@@ -24,5 +33,5 @@ if (isVolume) {
 } else {
     cuboid([powerWidth + (overhang * 2), height, innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
     translate([0, 0, innerDepth]) cuboid([powerWidth, height, outerDepth + innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
-cyl(l = push, d = height, align = V_BOTTOM);
+    cyl(l = push, d = height, align = V_BOTTOM);
 }
