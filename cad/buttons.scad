@@ -11,7 +11,7 @@ include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 use <BOSL/shapes.scad>
 
-$fn = 50;
+$fn = $preview ? 20 : 50;
 
 isVolume = true;
 
