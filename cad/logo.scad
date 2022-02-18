@@ -13,15 +13,15 @@ use <BOSL/shapes.scad>
 
 $fn = $preview ? 20 : 50;
 
-isL = true;
+isL = false;
 
 sep = 1e-3;
 sep2 = sep * 2;
 
-diameter = 39;
-height = 1;
+diameter = 40.5;
+height = 1.2;
 lipHeight = 0.2;
-lipDiameter = 42;
+lipDiameter = 44;
 
 module circle() {
     cyl(h = height, d = diameter, align = V_TOP);
