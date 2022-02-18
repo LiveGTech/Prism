@@ -26,12 +26,41 @@ overhang = 2;
 push = 0;
 
 if (isVolume) {
-    cuboid([volumeWidth + (overhang * 2), height, innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
-    translate([0, 0, innerDepth]) cuboid([volumeWidth, height, outerDepth + innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
-    translate([-(volumeWidth / 3), 0, 0]) cyl(l = push, d = height, align = V_BOTTOM);
-    translate([volumeWidth / 3, 0, 0]) cyl(l = push, d = height, align = V_BOTTOM);
+    cuboid(
+        [volumeWidth + (overhang * 2), height, innerDepth],
+        align = V_TOP,
+        fillet = height / 2, edges = EDGES_Z_ALL
+    );
+
+    translate([0, 0, innerDepth]) {
+        cuboid(
+            [volumeWidth, height, outerDepth + innerDepth],
+            align = V_TOP,
+            fillet = height / 2, edges = EDGES_Z_ALL
+        );
+    }
+
+    translate([-(volumeWidth / 3), 0, 0]) {
+        cyl(l = push, d = height, align = V_BOTTOM);
+    }
+
+    translate([volumeWidth / 3, 0, 0]) {
+        cyl(l = push, d = height, align = V_BOTTOM);
+    }
 } else {
-    cuboid([powerWidth + (overhang * 2), height, innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
-    translate([0, 0, innerDepth]) cuboid([powerWidth, height, outerDepth + innerDepth], align = V_TOP, fillet = height / 2, edges = EDGES_Z_ALL);
+    cuboid(
+        [powerWidth + (overhang * 2), height, innerDepth],
+        align = V_TOP,
+        fillet = height / 2, edges = EDGES_Z_ALL
+    );
+
+    translate([0, 0, innerDepth]) {
+        cuboid(
+            [powerWidth, height, outerDepth + innerDepth],
+            align = V_TOP,
+            fillet = height / 2, edges = EDGES_Z_ALL
+        );
+    }
+
     cyl(l = push, d = height, align = V_BOTTOM);
 }

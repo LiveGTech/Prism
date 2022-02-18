@@ -70,36 +70,102 @@ centreEdgeToBatteryPushSides = 20;
 
 difference() {
     // Main shell
-    zscale(outerDepth / (innerRadius * 2)) cuboid([outerWidth, outerHeight, innerRadius * 2], align = V_BOTTOM, fillet = innerRadius, edges = EDGES_Z_ALL + EDGES_BOTTOM);
-    up(sep) zscale(innerDepth / (innerRadius * 2)) cuboid([innerWidth, innerHeight, innerRadius * 2], align = V_BOTTOM, fillet = innerRadius, edges = EDGES_Z_ALL + EDGES_BOTTOM);
+
+    zscale(outerDepth / (innerRadius * 2)) {
+        cuboid(
+            [outerWidth, outerHeight, innerRadius * 2],
+            align = V_BOTTOM,
+            fillet = innerRadius, edges = EDGES_Z_ALL + EDGES_BOTTOM
+        );
+    }
+
+    up(sep) zscale(innerDepth / (innerRadius * 2)) {
+        cuboid(
+            [innerWidth, innerHeight, innerRadius * 2],
+            align = V_BOTTOM,
+            fillet = innerRadius, edges = EDGES_Z_ALL + EDGES_BOTTOM
+        );
+    }
 
     // Camera cutout
-    translate([(innerWidth / 2) - leftEdgeToLeftCutout, (innerHeight / 2) - frontEdgeToFrontCutout, -innerDepth - thickness]) cuboid([cutoutWidth, cutoutHeight, innerDepth], align = V_FRONT + V_LEFT, fillet = cutoutRadius, edges = EDGES_Z_ALL);
-    
+    translate([(innerWidth / 2) - leftEdgeToLeftCutout, (innerHeight / 2) - frontEdgeToFrontCutout, -innerDepth - thickness]) {
+        cuboid(
+            [cutoutWidth, cutoutHeight, innerDepth],
+            align = V_FRONT + V_LEFT,
+            fillet = cutoutRadius, edges = EDGES_Z_ALL
+        );
+    }
+
     // Audio jack cutout
-    translate([-(innerWidth / 2) + 23, (innerHeight / 2), -topToJack]) rotate([90, 0, 0]) cyl(l = 10, r = jackDiameter / 2);
+    translate([-(innerWidth / 2) + 23, (innerHeight / 2), -topToJack]) rotate([90, 0, 0]) {
+        cyl(l = 10, r = jackDiameter / 2);
+    }
 
     if (prototypeMode) {
         // Prototype window
-        cuboid([innerWidth * 0.8, innerHeight * 0.8, outerHeight], align = V_BOTTOM, fillet = 4, edges = EDGES_Z_ALL);
+        cuboid(
+            [innerWidth * 0.8, innerHeight * 0.8, outerHeight],
+            align = V_BOTTOM,
+            fillet = 4, edges = EDGES_Z_ALL
+        );
     } else {
         // Logo cutout
-        translate([0, 0, -innerDepth + sep2]) cyl(l = thickness + (3 * sep), d = logoDiameter, align = V_BOTTOM);
+        translate([0, 0, -innerDepth + sep2]) {
+            cyl(l = thickness + (3 * sep), d = logoDiameter, align = V_BOTTOM);
+        }
     }
 
     // Buttons
-    translate([(innerWidth / 2) - sep, (innerHeight / 2) - frontEdgeToFrontVolumeButtons, -topEdgeToTopButtons]) cuboid([thickness + sep2, volumeButtonsHeight, buttonsDepth], align = V_FRONT + V_BOTTOM + V_RIGHT, fillet = buttonsRadius, edges = EDGES_X_ALL);
-    translate([(innerWidth / 2) - sep, (innerHeight / 2) - frontEdgeToFrontPowerButton, -topEdgeToTopButtons]) cuboid([thickness + sep2, powerButtonHeight, buttonsDepth], align = V_FRONT + V_BOTTOM + V_RIGHT, fillet = buttonsRadius, edges = EDGES_X_ALL);
+
+    translate([(innerWidth / 2) - sep, (innerHeight / 2) - frontEdgeToFrontVolumeButtons, -topEdgeToTopButtons]) {
+        cuboid(
+            [thickness + sep2, volumeButtonsHeight, buttonsDepth],
+            align = V_FRONT + V_BOTTOM + V_RIGHT,
+            fillet = buttonsRadius, edges = EDGES_X_ALL
+        );
+    }
+
+    translate([(innerWidth / 2) - sep, (innerHeight / 2) - frontEdgeToFrontPowerButton, -topEdgeToTopButtons]) {
+        cuboid(
+            [thickness + sep2, powerButtonHeight, buttonsDepth],
+            align = V_FRONT + V_BOTTOM + V_RIGHT,
+            fillet = buttonsRadius, edges = EDGES_X_ALL
+        );
+    }
 
     // USB cutout
-    translate([0, -(innerHeight / 2), -topToUsb]) cuboid([usbWidth, 10, usbHeight], align = V_BOTTOM, fillet = usbRadius, edges = EDGES_Y_ALL);
+    translate([0, -(innerHeight / 2), -topToUsb]) {
+        cuboid(
+            [usbWidth, 10, usbHeight],
+            align = V_BOTTOM,
+            fillet = usbRadius, edges = EDGES_Y_ALL
+        );
+    }
 }
 
 // Speaker push surface (to hold speaker in place)
-translate([-centreEdgeToRightSpeakerPush, -(innerHeight / 2) + backEdgeToBackSpeakerPush, -innerDepth]) cuboid([speakerPushWidth, speakerPushHeight, speakerPushDepth], align = V_BACK + V_LEFT + V_TOP, fillet = speakerPushRadius, edges = EDGES_Z_ALL);
+translate([-centreEdgeToRightSpeakerPush, -(innerHeight / 2) + backEdgeToBackSpeakerPush, -innerDepth]) {
+    cuboid(
+        [speakerPushWidth, speakerPushHeight, speakerPushDepth],
+        align = V_BACK + V_LEFT + V_TOP,
+        fillet = speakerPushRadius, edges = EDGES_Z_ALL
+    );
+}
 
 // Left battery push surface (to hold battery in place)
-translate([-centreEdgeToBatteryPushSides, -(innerHeight / 2) + backEdgeToBatteryPush, -innerDepth]) cuboid([batteryPushWidth, batteryPushHeight, batteryPushDepth], align = V_BACK + V_LEFT + V_TOP, fillet = batteryPushRadius, edges = EDGES_Z_ALL);
+translate([-centreEdgeToBatteryPushSides, -(innerHeight / 2) + backEdgeToBatteryPush, -innerDepth]) {
+    cuboid(
+        [batteryPushWidth, batteryPushHeight, batteryPushDepth],
+        align = V_BACK + V_LEFT + V_TOP,
+        fillet = batteryPushRadius, edges = EDGES_Z_ALL
+    );
+}
 
 // Right battery push surface (to hold battery in place)
-translate([centreEdgeToBatteryPushSides, -(innerHeight / 2) + backEdgeToBatteryPush, -innerDepth]) cuboid([batteryPushWidth, batteryPushHeight, batteryPushDepth], align = V_BACK + V_RIGHT + V_TOP, fillet = batteryPushRadius, edges = EDGES_Z_ALL);
+translate([centreEdgeToBatteryPushSides, -(innerHeight / 2) + backEdgeToBatteryPush, -innerDepth]) {
+    cuboid(
+        [batteryPushWidth, batteryPushHeight, batteryPushDepth],
+        align = V_BACK + V_RIGHT + V_TOP,
+        fillet = batteryPushRadius, edges = EDGES_Z_ALL
+    );
+}
